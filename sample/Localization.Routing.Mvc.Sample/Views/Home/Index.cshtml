@@ -1,0 +1,12 @@
+﻿@using Microsoft.Extensions.Localization
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@inject IStringLocalizer<Resource> Sr
+
+<h1>Index.cshtml</h1>
+<h2>@Sr["Welcome"]</h2>
+<h2>From ViewData : @ViewData["Welcome"]</h2>
+

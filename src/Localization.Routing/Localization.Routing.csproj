@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Cure.AspNetCore.Localization.Routing</AssemblyName>
+    <RootNamespace>Cure.AspNetCore.Localization.Routing</RootNamespace>
+    <Version>1.0.0</Version>
+    <Authors>Joakim Carselind</Authors>
+    <Company>Cure Media</Company>
+    <Copyright>Cure Media</Copyright>
+    <PackageTags>asp.net core, .net core, localization, url</PackageTags>
+    <NeutralLanguage></NeutralLanguage>
+    <FileVersion>1.0</FileVersion>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/CureMedia/Localization/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/CureMedia/Localization/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CureMedia/Localization/</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Localization.Routing" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.0.1" />
+  </ItemGroup>
+
+</Project>
