@@ -12,6 +12,23 @@ environment:
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
     DOTNET_CLI_TELEMETRY_OPTOUT: 1
 test: off
-deploy: off
+artifacts:
+- path: .\src\**\artifacts\**\*.nupkg
+  name: NuGet
+deploy:
+- provider: NuGet
+  server: https://www.myget.org/F/curemedia-ci/api/v2/package
+  api_key:
+    secure: 1bkesYor/4CY0QlpVc/b41CgLXyyZGwckMAEb+el94w7JCFRSogdXaHB5puoZdlX
+  skip_symbols: true
+  on:
+    branch: master
+- provider: NuGet
+  name: production
+  skip_symbols: true
+  api_key:
+    secure: 34Og6nLOkZlS7tWzCb9mz8tuRdEsT8BQXSMi0xWIbobyfXEYZzZz2/XRWPOnxEb5
+  on:
+    appveyor_repo_tag: true
 
 os: Visual Studio 2017
