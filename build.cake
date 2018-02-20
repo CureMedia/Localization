@@ -14,8 +14,8 @@ var configuration = Argument("configuration", "Release");
 var projects = new string[] { "Localization.Routing", "Localization.Routing.Mvc" };
 
 // Define directories.
-var buildDir = Directory("src/Localization.Routing/bin") + Directory(configuration);
-var artifacts = Directory("artificats");
+var buildDir = Directory("./src/Localization.Routing/bin") + Directory(configuration);
+var artifacts = Directory("./artificats");
 var solution = "Localization.sln";
 
 //////////////////////////////////////////////////////////////////////
