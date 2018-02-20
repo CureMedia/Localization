@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 
-namespace Localization.Routing.Mvc
+namespace Cure.AspNetCore.Localization.Routing.Mvc
 {
     /// <summary>
     ///     Descriptor for adding <see cref="IRouteConstraint" /> to the <see cref="FilterCollection" />.

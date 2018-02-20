@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 
-namespace Localization.Routing.Mvc
+namespace Cure.AspNetCore.Localization.Routing.Mvc
 {
     /// <summary>
     ///     Adapter to invoke add the <see cref="RequestLocalizationMiddleware" />

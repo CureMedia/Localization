@@ -2,6 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Cure.AspNetCore.Localization.Routing.Mvc</RootNamespace>
+    <AssemblyName>Cure.AspNetCore.Localization.Routing.Mvc</AssemblyName>
+    <Authors>Joakim Carselind</Authors>
+    <Company>Cure Media</Company>
+    <Copyright>Cure Media</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/CureMedia/Localization/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/CureMedia/Localization/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CureMedia/Localization/</RepositoryUrl>
+    <FileVersion>1.0</FileVersion>
+    <Version>1.0.0-alpha1</Version>
+    <PackageTags>asp.net core mvc, .net core mvc, localization, request localization url</PackageTags>
+    <Description>Request localization for Microsoft.AspNetCore that redirect to a URL with culture data
+</Description>
   </PropertyGroup>
 
   <ItemGroup>

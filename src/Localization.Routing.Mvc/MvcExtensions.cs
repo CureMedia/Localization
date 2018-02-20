@@ -1,6 +1,6 @@
 ﻿using Cure.AspNetCore.Localization.Routing;
 using Cure.AspNetCore.Localization.Routing.Abstractions;
-using Localization.Routing.Mvc;
+using Cure.AspNetCore.Localization.Routing.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
