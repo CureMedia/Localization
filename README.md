@@ -1,6 +1,13 @@
 # Localization
 Trying to make route data culture localization easier to setup for projects with or without MVC.
 
+# Status
+| Branch | Status |
+|--------|--------|
+| master | [![Build status](https://ci.appveyor.com/api/projects/status/ewg0xss3l681ram3?svg=true)](https://ci.appveyor.com/project/curemedia/localization) |
+| develop | [![Build status](https://ci.appveyor.com/api/projects/status/ewg0xss3l681ram3/branch/develop?svg=true)](https://ci.appveyor.com/project/curemedia/localization/branch/develop) |
+
+
 # Usage
 
 # Internals
