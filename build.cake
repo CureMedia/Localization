@@ -14,8 +14,8 @@ var configuration = Argument("configuration", "Release");
 var projects = new string[] { "Localization.Routing", "Localization.Routing.Mvc" };
 
 // Define directories.
-var buildDir = Directory("./src/Localization.Routing/bin") + Directory(configuration);
 var artifacts = Directory("./artificats");
+var buildDir =  artifacts + Directory("bin"); // + Directory(configuration);
 var solution = "Localization.sln";
 
 //////////////////////////////////////////////////////////////////////
@@ -25,6 +25,7 @@ var solution = "Localization.sln";
 Task("Clean")
     .Does(() =>
 {
+	DotNetCoreClean(solution);
 	CleanDirectory(artifacts);
     CleanDirectory(buildDir);
 });
@@ -42,9 +43,13 @@ Task("Build")
 {
     if(IsRunningOnWindows())
     {
-      // Use MSBuild
-      MSBuild(solution, settings =>
-        settings.SetConfiguration(configuration));
+      var settings = new DotNetCoreBuildSettings
+     {         
+         Configuration = configuration,
+         OutputDirectory = buildDir,
+		 NoRestore = true
+     };     
+      DotNetCoreBuild(solution, settings);
     }
     else
     {
