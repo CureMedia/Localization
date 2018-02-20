@@ -15,6 +15,7 @@ var projects = new string[] { "Localization.Routing", "Localization.Routing.Mvc"
 
 // Define directories.
 var buildDir = Directory("src/Localization.Routing/bin") + Directory(configuration);
+var artifacts = Directory("artificats.");
 var solution = "Localization.sln";
 
 //////////////////////////////////////////////////////////////////////
@@ -24,6 +25,7 @@ var solution = "Localization.sln";
 Task("Clean")
     .Does(() =>
 {
+	CleanDirectory(artifacts);
     CleanDirectory(buildDir);
 });
 
@@ -56,7 +58,7 @@ Task("Test")
     .IsDependentOn("Build")
   .Does(() =>
     {
-		var settings = new DotNetCoreTestSettings()
+		var settings = new DotNetCoreTestSettings
                 {
                     Configuration = configuration,
                     NoBuild = true
@@ -68,12 +70,29 @@ Task("Test")
         }
     });
 
+Task("Pack")
+	.IsDependentOn("Test")
+	.Does(() =>
+		{
+			 var settings = new DotNetCorePackSettings
+		     {
+				Configuration = "Release",
+				OutputDirectory = artifacts,
+				NoBuild = true
+			};
+			var projects = GetFiles("src/**/*.csproj");
+			foreach(var project in projects)
+			{
+				DotNetCorePack(project.FullPath, settings);
+			}			
+		});
+
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Test");
+    .IsDependentOn("Pack");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
