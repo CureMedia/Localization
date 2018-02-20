@@ -10,13 +10,14 @@
     <Copyright>Cure Media</Copyright>
     <PackageTags>asp.net core;.net core;localization;request localization url</PackageTags>
     <NeutralLanguage></NeutralLanguage>
-    <FileVersion>1.1</FileVersion>
+    <FileVersion>1.0.0.0</FileVersion>
     <PackageLicenseUrl>https://raw.githubusercontent.com/CureMedia/Localization/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/CureMedia/Localization/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/CureMedia/Localization/</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Description>Request localization for Microsoft.AspNetCore that redirect to a URL with culture data
 </Description>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

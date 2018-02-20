@@ -15,6 +15,7 @@ var projects = new string[] { "Localization.Routing", "Localization.Routing.Mvc"
 
 // Define directories.
 var artifacts = Directory("./artifacts");
+var tests = artifacts + Directory("tests");
 var buildDir =  artifacts + Directory("bin"); // + Directory(configuration);
 var solution = "Localization.sln";
 
@@ -62,11 +63,16 @@ Task("Test")
     .IsDependentOn("Build")
   .Does(() =>
     {
-		var settings = new DotNetCoreTestSettings
-                {
-                    Configuration = configuration,
-                    NoBuild = true
-                };
+		 var settings = new DotNetCoreTestSettings
+        {
+           NoBuild = true,
+           Configuration = configuration,
+           ArgumentCustomization = args => {
+                args.Append("--logger:trx");
+                args.Append("--results-directory:"+MakeAbsolute(File(tests)));
+                return args;
+           }
+        };
         var projects = GetFiles("test/**/*.csproj");
         foreach(var project in projects)
         {
@@ -80,7 +86,7 @@ Task("Pack")
 		{
 			 var settings = new DotNetCorePackSettings
 		     {
-				Configuration = "Release",
+				Configuration = configuration,
 				OutputDirectory = artifacts,
 				NoBuild = true
 			};
