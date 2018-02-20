@@ -46,7 +46,6 @@ Task("Build")
       var settings = new DotNetCoreBuildSettings
      {         
          Configuration = configuration,
-         OutputDirectory = buildDir,
 		 NoRestore = true
      };     
       DotNetCoreBuild(solution, settings);

@@ -4,11 +4,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Cure.AspNetCore.Localization.Routing</AssemblyName>
     <RootNamespace>Cure.AspNetCore.Localization.Routing</RootNamespace>
-    <Version>1.0.0-alpha1</Version>
+    <Version>1.0.0</Version>
     <Authors>Joakim Carselind</Authors>
     <Company>Cure Media</Company>
     <Copyright>Cure Media</Copyright>
-    <PackageTags>asp.net core, .net core, localization, request localization url</PackageTags>
+    <PackageTags>asp.net core;.net core;localization;request localization url</PackageTags>
     <NeutralLanguage></NeutralLanguage>
     <FileVersion>1.1</FileVersion>
     <PackageLicenseUrl>https://raw.githubusercontent.com/CureMedia/Localization/master/LICENSE</PackageLicenseUrl>
