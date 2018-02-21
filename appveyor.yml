@@ -3,7 +3,7 @@ init:
 branches:
   only:
     - master
-    - develop    
+    - develop
 build_script:
   - ps: .\build.ps1
 clone_depth: 1
@@ -29,7 +29,7 @@ deploy:
   api_key:
     secure: 34Og6nLOkZlS7tWzCb9mz8tuRdEsT8BQXSMi0xWIbobyfXEYZzZz2/XRWPOnxEb5
   on:
-    appveyor_repo_tag: true  
+    appveyor_repo_tag: true
   provider: GitHub
     release: v$(appveyor_build_version)
     description: 'Release version $(appveyor_build_version)'
