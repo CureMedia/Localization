@@ -30,9 +30,9 @@ deploy:
     secure: 34Og6nLOkZlS7tWzCb9mz8tuRdEsT8BQXSMi0xWIbobyfXEYZzZz2/XRWPOnxEb5
   on:
     appveyor_repo_tag: true
-  provider: GitHub
-    release: v$(appveyor_build_version)
-    description: 'Release version $(appveyor_build_version)'
+- provider: GitHub
+  release: v$(appveyor_build_version)
+  description: 'Release version $(appveyor_build_version)'
   auth_token:
     secure: 8l4FslQwLrkOFwUUIEcRKL69vymUgkVl+rfZ9NY+3VAkzogn44qsdzCiyYfMt+tx
   artifact: /.*\.nupkg/            # upload all NuGet packages to release assets
