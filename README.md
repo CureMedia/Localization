@@ -9,7 +9,35 @@ Trying to make route data culture localization easier to configure for ASP.NET C
 
 
 # Usage
+```c#
+public void ConfigureServices(IServiceCollection services)
+{
+  // Default request culture is 'sv-SE' and the rest are supported; both culture and ui culture
+  services.AddRequestRouteLocalization("sv-SE","sv", "en-US", "en");
+  
+  // Add the LocalizationPipeline class as a MiddlewareFilterAttribute in the MVC pipeline
+  services.AddMvc().AddMvcDefaultRouteLocalization();
+}
+```
 
+```c#
+public void Configure(IApplicationBuilder app)
+{
+  // Add the RequestLocalizationMiddleware to the execution pipeline
+  app.UseRequestRouteLocalization();
+  
+  /**
+  * Configure the default route '{culture:culture}/{controller=Home}/{action=Index}/{id?}'
+  * The 'culture' path matches the default of RouteDataRequestLocalizationProvider and the constraint 'culture'
+  * has been registered in ConfigureServices call to AddRequest..
+  * Two more routes have been added after (in order)
+  * 1. '{culture:culture}/{*path}' produces a NotFound (404)
+  * 2. '{*path} will use the localization providers registered in RequestRouteOptions to determine the culture and postpend
+  * to the {*path} value and then redirect Found (301)
+  */
+  app.UseMvcWithDefaultRequestLocalization();  
+}
+```
 ## Install
 
 
