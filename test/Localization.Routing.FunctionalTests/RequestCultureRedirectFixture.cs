@@ -1,6 +1,3 @@
-using System.Net;
-using System.Threading.Tasks;
-using Cure.AspNetCore.Localization.Routing;
 using Cure.AspNetCore.Localization.Routing.Abstractions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,23 +5,19 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
+using System.Net;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Localization.Routing.FunctionalTests
 {
     public class RequestCultureRedirectFixture
     {
-        private static MockRouteDataRequestCultureUrl RouteDataRequestCultureUrl()
-        {
-            return new MockRouteDataRequestCultureUrl(Options.Create(new RouteDataRequestCultureOptions()));
-        }
-
         [Fact]
         public async Task Should_Redirect_To_CultureUrl_Based_On_AcceptHeaderLanguage()
         {
             var redirectShortCircuit = true;
-            var cultureUrl = RouteDataRequestCultureUrl();
+            var cultureUrl = RouteDataHelper.RouteDataRequestCultureUrl();
             var builder = new WebHostBuilder()
                           .ConfigureServices(services =>
                           {
@@ -58,7 +51,7 @@ namespace Localization.Routing.FunctionalTests
         public async Task Should_Redirect_To_CultureUrl_Based_On_Cookie()
         {
             var redirectShortCircuit = true;
-            var cultureUrl = RouteDataRequestCultureUrl();
+            var cultureUrl = RouteDataHelper.RouteDataRequestCultureUrl();
             var builder = new WebHostBuilder()
                           .ConfigureServices(services =>
                           {
@@ -133,7 +126,7 @@ namespace Localization.Routing.FunctionalTests
         public async Task Should_Use_Route_Data_Culture()
         {
             var noRedirect = true;
-            var cultureUrl = RouteDataRequestCultureUrl();
+            var cultureUrl = RouteDataHelper.RouteDataRequestCultureUrl();
             var builder = new WebHostBuilder()
                           .ConfigureServices(services =>
                           {
