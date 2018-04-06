@@ -16,6 +16,8 @@ namespace Cure.AspNetCore.Localization.Routing
     /// </summary>
     public class DefaultRouteDataRequestCultureUrl : IRouteDataRequestCultureUrl
     {
+        public RouteOptions RouteOptions { get; }
+
         private readonly RouteDataRequestCultureOptions _options;
 
         /// <summary>
@@ -24,6 +26,10 @@ namespace Cure.AspNetCore.Localization.Routing
         /// <param name="options">The <see cref="RouteDataRequestCultureOptions" /> to use.</param>
         public DefaultRouteDataRequestCultureUrl(IOptions<RouteDataRequestCultureOptions> options) =>
             _options = options.Value;
+
+        public DefaultRouteDataRequestCultureUrl(
+            IOptions<RouteDataRequestCultureOptions> options,
+            IOptions<RouteOptions> routeOptions) : this(options) => RouteOptions = routeOptions.Value;
 
         /// <inheritdoc />
         public string GetUrl(HttpContext context)
@@ -67,7 +73,7 @@ namespace Cure.AspNetCore.Localization.Routing
 
             // TODO(joacar) This should be refactored since it is extremely coupled to GetRedirectUrl implementation
             // It is not clear that overriding this also MUST override GetRedirectUrl.
-            return context.Request.Path.Value.Substring(0, index).TrimStart('/').TrimEnd('/');            
+            return context.Request.Path.Value.Substring(0, index).TrimStart('/').TrimEnd('/');
         }
 
         /// <summary>
@@ -101,8 +107,30 @@ namespace Cure.AspNetCore.Localization.Routing
             CultureInfo uiCulture)
         {
             // TODO(joacar) Perhaps move to RouteDataRequestCultureOptions and have GetRedirectUrl
-            var path = GetPath(context);            
-            return $"/{culture.Name}{path}";
+            var path = GetPath(context);
+            var redirect = $"/{culture.Name}{path}";
+            if (RouteOptions != null)
+            {
+                if (RouteOptions.LowercaseUrls)
+                {
+                    redirect = redirect.ToLower();
+                }
+
+                if (RouteOptions.AppendTrailingSlash)
+                {
+                    if (!path.EndsWith("/"))
+                    {
+                        redirect += "/";
+                    }
+                    
+                }
+                else
+                {
+                    redirect = redirect.TrimEnd('/');
+                }
+            }
+
+            return redirect;
         }
 
         /// <summary>
