@@ -1,0 +1,11 @@
+﻿<Project>
+
+  <Import Project="../../Directory.Build.props"/>
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <Authors>Joakim Carselind</Authors>
+    <Description>URL localization middleware for Microsoft.AspNetCore</Description>
+    <PackageTags>url localization;localization</PackageTags>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,44 @@
+<Project>
+
+  <Import Project="version.props" />
+  
+  <PropertyGroup>
+    <GenerateCommitHashAttribute Condition="'$(RepositoryCommit)'==''">false</GenerateCommitHashAttribute>
+    <GenerateSourceLinkFile>false</GenerateSourceLinkFile>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <EnableApiCheck>false</EnableApiCheck>
+    <!-- workaround https://github.com/aspnet/CoreCLR/issues/223 -->
+    <NoWarn>$(NoWarn);NU1603</NoWarn>
+    <Serviceable>false</Serviceable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <RepositoryUrl>https://github.com/CureMedia/Localization</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Joakim Carselind</Authors>
+    <Product>URL Localization</Product>
+    <Copyright>© Cure Media</Copyright>
+    <Description>Request localization for Microsoft.AspNetCore that redirect to a URL with culture data</Description>
+    <PackageTags>asp.net core;.net core;localization;request localization url</PackageTags>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/CureMedia/Localization/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/CureMedia/Localization</PackageProjectUrl>
+    <!--<PackageReleaseNotes>See $(PackageProjectUrl)/blob/master/CHANGELOG.md#v$(VersionPrefix.Replace('.','')) for release notes.</PackageReleaseNotes>-->
+    <IsPackable>false</IsPackable>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <LangVersion>Latest</LangVersion>
+
+    <GenerateFullPaths Condition="'$(VSCODE_PID)' != ''">true</GenerateFullPaths>
+
+    <!--<BaseIntermediateOutputPath>$(MSBuildThisFileDirectory).build\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>-->
+    <!--<BaseOutputPath>$(MSBuildThisFileDirectory).build\bin\$(MSBuildProjectName)</BaseOutputPath>-->
+  </PropertyGroup>
+
+</Project>
